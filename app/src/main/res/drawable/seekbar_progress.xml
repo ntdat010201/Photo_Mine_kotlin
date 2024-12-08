@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Màu nền thanh chưa tải -->
+    <item>
+        <shape>
+            <size android:height="10dp"/>
+            <solid android:color="@android:color/darker_gray" />
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+    <!-- Màu thanh đã tải -->
+    <item android:right="0dp">
+        <shape>
+            <size android:height="10dp"/>
+            <solid android:color="@color/purple_500"/>
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+</layer-list>
