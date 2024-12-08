@@ -55,14 +55,12 @@ dependencies {
     implementation ("io.insert-koin:koin-android:3.4.0")
     implementation ("io.insert-koin:koin-core:3.4.0")
 
-
     //glide
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     //MVVM
     implementation("androidx.activity:activity-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
-
 
     //animation
     implementation ("androidx.palette:palette-ktx:1.0.0")
