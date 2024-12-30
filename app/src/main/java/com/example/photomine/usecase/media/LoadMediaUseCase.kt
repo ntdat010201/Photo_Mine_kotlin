@@ -3,6 +3,7 @@ package com.example.photomine.usecase.media
 import android.app.Application
 import android.provider.MediaStore
 import com.example.photomine.model.ModelImage
+import com.example.photomine.utils.FormatUtil.Companion.getExifDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -34,17 +35,14 @@ class LoadMediaUseCase(
 
             cursor?.use {
                 val pathColumn = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-                val dateAddedColumn = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATE_ADDED)
                 val sizeColumn = it.getColumnIndexOrThrow(MediaStore.Images.Media.SIZE)
-                val nameColumn = it.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME)
 
                 while (it.moveToNext()) {
-                    val imageUri = it.getString(pathColumn)
-                    val dateAdded = it.getLong(dateAddedColumn)
+                    val imagePath = it.getString(pathColumn)
                     val size = it.getLong(sizeColumn)
-                    val name = it.getString(nameColumn)
+                    val dateTaken = getExifDate(imagePath)
 
-                    images.add(ModelImage(0, imageUri, dateAdded, size, "High"))
+                    images.add(ModelImage(0, imagePath, dateTaken, size, "High"))
                 }
             }
 
@@ -52,7 +50,6 @@ class LoadMediaUseCase(
             val videoProjection = arrayOf(
                 MediaStore.Video.Media._ID,
                 MediaStore.Video.Media.DATA,
-                MediaStore.Video.Media.DATE_ADDED,
                 MediaStore.Video.Media.SIZE,
                 MediaStore.Video.Media.DISPLAY_NAME
             )
@@ -67,17 +64,14 @@ class LoadMediaUseCase(
 
             videoCursor?.use {
                 val pathColumn = it.getColumnIndexOrThrow(MediaStore.Video.Media.DATA)
-                val dateAddedColumn = it.getColumnIndexOrThrow(MediaStore.Video.Media.DATE_ADDED)
                 val sizeColumn = it.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE)
-                val nameColumn = it.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME)
 
                 while (it.moveToNext()) {
-                    val videoUri = it.getString(pathColumn)
-                    val dateAdded = it.getLong(dateAddedColumn)
+                    val imagePath = it.getString(pathColumn)
                     val size = it.getLong(sizeColumn)
-                    val name = it.getString(nameColumn)
+                    val dateTaken = getExifDate(imagePath)
 
-                    videos.add(ModelImage(0, videoUri, dateAdded, size, "High"))
+                    videos.add(ModelImage(0, imagePath, dateTaken, size, "High"))
                 }
             }
 

@@ -26,7 +26,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CollectionFragment : Fragment() {
     private lateinit var binding: FragmentCollectionBinding
     private val viewModel: ViewModel by viewModel()
-
     private lateinit var adapter: CollectionAdapter
 
 
@@ -40,14 +39,11 @@ class CollectionFragment : Fragment() {
         return binding.root
     }
 
-
     private fun initData() {
 
         adapter = CollectionAdapter(emptyList())
         binding.rcvCollection.adapter = adapter
         binding.rcvCollection.layoutManager = GridLayoutManager(requireContext(), 5)
-        Log.d("DAT", "initData: ")
-
     }
 
 
@@ -91,7 +87,6 @@ class CollectionFragment : Fragment() {
         super.onStart()
         viewModel.loadImagesAndVideos()
         viewModel.imagesLiveData.observe(viewLifecycleOwner, Observer { images ->
-            Log.d("DAT", "initData: ${images.size}")
             adapter.updateImage(images)
         })
     }

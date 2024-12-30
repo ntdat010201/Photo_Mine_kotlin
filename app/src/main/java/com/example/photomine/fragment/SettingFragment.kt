@@ -29,7 +29,7 @@ class SettingFragment : Fragment() {
     private fun initData() {
         val settings = listOf(
 //            ModelSetting(R.drawable.ic_favorite_red, "Notifications", "Enable app notifications", SettingType.SWITCH),
-            ModelSetting(R.drawable.ic_camera, "Camera", "Camera,phân loại,tỉ lệ", SettingType.NAVIGATION),
+            ModelSetting(R.drawable.ic_camera, "Camera", "Camera phân loại,tỉ lệ ", SettingType.NAVIGATION),
             ModelSetting(R.drawable.ic_flashlight_orange, "Chế độ flash", "Bật,tắt", SettingType.NAVIGATION),
             ModelSetting(R.drawable.ic_collections_blue, "Bộ sưu tập", "Danh sách,lưới", SettingType.NAVIGATION),
             ModelSetting(R.drawable.ic_lock_person_green, "Bảo mật ảnh/video", "bằng mã pin,vân tay", SettingType.NAVIGATION),

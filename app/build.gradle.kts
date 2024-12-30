@@ -69,7 +69,10 @@ dependencies {
     implementation ("androidx.camera:camera-core:1.3.0")
     implementation ("androidx.camera:camera-camera2:1.3.0")
     implementation ("androidx.camera:camera-lifecycle:1.3.0")
+    implementation ("androidx.camera:camera-video:1.3.0")
     implementation ("androidx.camera:camera-view:1.3.0")
+
+    implementation ("com.github.chrisbanes:PhotoView:2.3.0")
 
     //exo player
     implementation ("com.google.android.exoplayer:exoplayer:2.19.1")

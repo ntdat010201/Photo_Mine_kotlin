@@ -39,6 +39,12 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
         imagesMutableLiveData.value = currentList
     }
 
+    fun addVideo(modelVideo: ModelImage) {
+        val updatedList = videosMutableLiveData.value?.toMutableList() ?: mutableListOf()
+        updatedList.add(modelVideo)
+        videosMutableLiveData.value = updatedList
+    }
+
     fun loadImagesAndVideos() {
         viewModelScope.launch {
             val (imageList, videoList) = loadMediaUseCase.loadImagesAndVideos()

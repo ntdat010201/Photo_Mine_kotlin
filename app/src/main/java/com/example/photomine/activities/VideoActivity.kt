@@ -26,17 +26,21 @@ class VideoActivity : AppCompatActivity() {
         initListener()
     }
 
-    private fun initData() {
-
+    override fun onStart() {
+        super.onStart()
         viewModel.loadImagesAndVideos()
-        adapter = VideoAdapter(emptyList(), this)
-        binding.rcvVideo.adapter = adapter
-        binding.rcvVideo.layoutManager = GridLayoutManager(this, 4)
-
         viewModel.videosLiveData.observe(this, Observer { videos ->
             adapter.updateVideo(videos)
             binding.quantity.text = videos.size.toString()
         })
+    }
+
+    private fun initData() {
+        adapter = VideoAdapter(emptyList(), this)
+        binding.rcvVideo.adapter = adapter
+        binding.rcvVideo.layoutManager = GridLayoutManager(this, 4)
+
+
     }
 
     private fun initView() {

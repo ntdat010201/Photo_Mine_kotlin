@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.photomine.R
 import com.example.photomine.adapter.ViewpagerActivityAdapter
@@ -16,6 +17,9 @@ import com.example.photomine.fragment.CollectionFragment
 import com.example.photomine.fragment.SettingFragment
 import com.example.photomine.utils.Const.REQUEST_CODE
 import com.example.photomine.viewmodel.ViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -30,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initData()
     }
 

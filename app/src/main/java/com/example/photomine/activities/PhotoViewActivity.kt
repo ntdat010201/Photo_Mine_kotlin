@@ -42,6 +42,7 @@ class PhotoViewActivity : AppCompatActivity() {
 
     private fun initView() {
         image.let {
+//            Glide.with(this).load(image.imageFile).into(binding.photoImageView)
             Glide.with(this).load(image.imageFile).into(binding.photoImageView)
         }
     }
@@ -90,7 +91,7 @@ class PhotoViewActivity : AppCompatActivity() {
 
     private fun import() {
         lifecycleScope.launch {
-            val isFavorite = viewModel.isFileFavorite(image!!.imageFile)
+            val isFavorite = viewModel.isFileFavorite(image.imageFile)
             if (isFavorite) {
                 binding.favorite.setImageResource(R.drawable.ic_favorite_red)
             } else {
@@ -100,16 +101,16 @@ class PhotoViewActivity : AppCompatActivity() {
         }
         binding.favorite.setOnClickListener {
             lifecycleScope.launch {
-                val isFavorite = viewModel.isFileFavorite(image!!.imageFile)
+                val isFavorite = viewModel.isFileFavorite(image.imageFile)
                 if (isFavorite) { // nếu path tồn tại ko null
-                    Log.d("DAT", "delete: ${image!!.imageFile}")
-                    viewModel.removeFavoriteFile(image!!)
+                    Log.d("DAT", "delete: ${image.imageFile}")
+                    viewModel.removeFavoriteFile(image)
                     binding.favorite.setImageResource(R.drawable.ic_favorite_white)
                     Toast.makeText(this@PhotoViewActivity, "đã xóa", Toast.LENGTH_SHORT).show()
                 } else { // ko tồn tại
-                    Log.d("DAT", "add: ${image!!.imageFile}")
+                    Log.d("DAT", "add: ${image.imageFile}")
                     binding.favorite.setImageResource(R.drawable.ic_favorite_red)
-                    viewModel.addFavoriteFile(image!!)
+                    viewModel.addFavoriteFile(image)
                     Toast.makeText(this@PhotoViewActivity, "đã thêm", Toast.LENGTH_SHORT).show()
 
                 }
